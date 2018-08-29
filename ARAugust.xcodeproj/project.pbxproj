@@ -7,15 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D21BA370213735C1000AA7F9 /* ColladaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BA36F213735C1000AA7F9 /* ColladaNode.swift */; };
+		D21BA37321375BC2000AA7F9 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BA37221375BC2000AA7F9 /* SCNNode.swift */; };
 		D23125542135C2DB00B15DEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23125532135C2DB00B15DEA /* AppDelegate.swift */; };
 		D23125562135C2DB00B15DEA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D23125552135C2DB00B15DEA /* art.scnassets */; };
 		D23125582135C2DB00B15DEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23125572135C2DB00B15DEA /* ViewController.swift */; };
 		D231255B2135C2DB00B15DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23125592135C2DB00B15DEA /* Main.storyboard */; };
 		D231255D2135C2DC00B15DEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D231255C2135C2DC00B15DEA /* Assets.xcassets */; };
 		D23125602135C2DC00B15DEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D231255E2135C2DC00B15DEA /* LaunchScreen.storyboard */; };
+		D23125882135F01800B15DEA /* StickLeaf01.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125782135F01800B15DEA /* StickLeaf01.png */; };
+		D23125892135F01800B15DEA /* StickLeaf02.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125792135F01800B15DEA /* StickLeaf02.png */; };
+		D231258A2135F01800B15DEA /* FitLucas_Wear.png in Resources */ = {isa = PBXBuildFile; fileRef = D231257A2135F01800B15DEA /* FitLucas_Wear.png */; };
+		D231258B2135F01800B15DEA /* FitLucas_Face.png in Resources */ = {isa = PBXBuildFile; fileRef = D231257B2135F01800B15DEA /* FitLucas_Face.png */; };
+		D231258C2135F01800B15DEA /* Stick02.png in Resources */ = {isa = PBXBuildFile; fileRef = D231257C2135F01800B15DEA /* Stick02.png */; };
+		D231258D2135F01800B15DEA /* FitLucas_EyeYellow.01.png in Resources */ = {isa = PBXBuildFile; fileRef = D231257D2135F01800B15DEA /* FitLucas_EyeYellow.01.png */; };
+		D231258E2135F01800B15DEA /* FitLucas_EyeYellow.00.png in Resources */ = {isa = PBXBuildFile; fileRef = D231257E2135F01800B15DEA /* FitLucas_EyeYellow.00.png */; };
+		D231258F2135F01800B15DEA /* FitLucas_EyeYellow.02.png in Resources */ = {isa = PBXBuildFile; fileRef = D231257F2135F01800B15DEA /* FitLucas_EyeYellow.02.png */; };
+		D23125902135F01800B15DEA /* FitLucas_Hair.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125802135F01800B15DEA /* FitLucas_Hair.png */; };
+		D23125912135F01800B15DEA /* FitLucas_EyeYellow.03.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125812135F01800B15DEA /* FitLucas_EyeYellow.03.png */; };
+		D23125922135F01800B15DEA /* FitLucas_Eye.00.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125822135F01800B15DEA /* FitLucas_Eye.00.png */; };
+		D23125932135F01800B15DEA /* FitLucas_Eye.01.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125832135F01800B15DEA /* FitLucas_Eye.01.png */; };
+		D23125942135F01800B15DEA /* Stick.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125842135F01800B15DEA /* Stick.png */; };
+		D23125952135F01800B15DEA /* FitLucas_Eye.03.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125852135F01800B15DEA /* FitLucas_Eye.03.png */; };
+		D23125962135F01800B15DEA /* FitLucas_Eye.02.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125862135F01800B15DEA /* FitLucas_Eye.02.png */; };
+		D23125972135F01800B15DEA /* FitLucas00out.dae in Resources */ = {isa = PBXBuildFile; fileRef = D23125872135F01800B15DEA /* FitLucas00out.dae */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D21BA36F213735C1000AA7F9 /* ColladaNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColladaNode.swift; sourceTree = "<group>"; };
+		D21BA37221375BC2000AA7F9 /* SCNNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		D23125502135C2DB00B15DEA /* ARAugust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARAugust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23125532135C2DB00B15DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23125552135C2DB00B15DEA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -24,6 +44,22 @@
 		D231255C2135C2DC00B15DEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D231255F2135C2DC00B15DEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23125612135C2DC00B15DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D23125782135F01800B15DEA /* StickLeaf01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StickLeaf01.png; sourceTree = "<group>"; };
+		D23125792135F01800B15DEA /* StickLeaf02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StickLeaf02.png; sourceTree = "<group>"; };
+		D231257A2135F01800B15DEA /* FitLucas_Wear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Wear.png; sourceTree = "<group>"; };
+		D231257B2135F01800B15DEA /* FitLucas_Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Face.png; sourceTree = "<group>"; };
+		D231257C2135F01800B15DEA /* Stick02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stick02.png; sourceTree = "<group>"; };
+		D231257D2135F01800B15DEA /* FitLucas_EyeYellow.01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_EyeYellow.01.png; sourceTree = "<group>"; };
+		D231257E2135F01800B15DEA /* FitLucas_EyeYellow.00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_EyeYellow.00.png; sourceTree = "<group>"; };
+		D231257F2135F01800B15DEA /* FitLucas_EyeYellow.02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_EyeYellow.02.png; sourceTree = "<group>"; };
+		D23125802135F01800B15DEA /* FitLucas_Hair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Hair.png; sourceTree = "<group>"; };
+		D23125812135F01800B15DEA /* FitLucas_EyeYellow.03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_EyeYellow.03.png; sourceTree = "<group>"; };
+		D23125822135F01800B15DEA /* FitLucas_Eye.00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Eye.00.png; sourceTree = "<group>"; };
+		D23125832135F01800B15DEA /* FitLucas_Eye.01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Eye.01.png; sourceTree = "<group>"; };
+		D23125842135F01800B15DEA /* Stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stick.png; sourceTree = "<group>"; };
+		D23125852135F01800B15DEA /* FitLucas_Eye.03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Eye.03.png; sourceTree = "<group>"; };
+		D23125862135F01800B15DEA /* FitLucas_Eye.02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Eye.02.png; sourceTree = "<group>"; };
+		D23125872135F01800B15DEA /* FitLucas00out.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = FitLucas00out.dae; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21BA37121375BAF000AA7F9 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D21BA37221375BC2000AA7F9 /* SCNNode.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		D23125472135C2DB00B15DEA = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +100,12 @@
 		D23125522135C2DB00B15DEA /* ARAugust */ = {
 			isa = PBXGroup;
 			children = (
+				D21BA37121375BAF000AA7F9 /* extensions */,
 				D23125532135C2DB00B15DEA /* AppDelegate.swift */,
+				D23125772135F01800B15DEA /* models */,
 				D23125552135C2DB00B15DEA /* art.scnassets */,
 				D23125572135C2DB00B15DEA /* ViewController.swift */,
+				D21BA36F213735C1000AA7F9 /* ColladaNode.swift */,
 				D23125592135C2DB00B15DEA /* Main.storyboard */,
 				D231255C2135C2DC00B15DEA /* Assets.xcassets */,
 				D231255E2135C2DC00B15DEA /* LaunchScreen.storyboard */,
@@ -66,6 +113,30 @@
 			);
 			path = ARAugust;
 			sourceTree = "<group>";
+		};
+		D23125772135F01800B15DEA /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D23125782135F01800B15DEA /* StickLeaf01.png */,
+				D23125792135F01800B15DEA /* StickLeaf02.png */,
+				D231257A2135F01800B15DEA /* FitLucas_Wear.png */,
+				D231257B2135F01800B15DEA /* FitLucas_Face.png */,
+				D231257C2135F01800B15DEA /* Stick02.png */,
+				D231257D2135F01800B15DEA /* FitLucas_EyeYellow.01.png */,
+				D231257E2135F01800B15DEA /* FitLucas_EyeYellow.00.png */,
+				D231257F2135F01800B15DEA /* FitLucas_EyeYellow.02.png */,
+				D23125802135F01800B15DEA /* FitLucas_Hair.png */,
+				D23125812135F01800B15DEA /* FitLucas_EyeYellow.03.png */,
+				D23125822135F01800B15DEA /* FitLucas_Eye.00.png */,
+				D23125832135F01800B15DEA /* FitLucas_Eye.01.png */,
+				D23125842135F01800B15DEA /* Stick.png */,
+				D23125852135F01800B15DEA /* FitLucas_Eye.03.png */,
+				D23125862135F01800B15DEA /* FitLucas_Eye.02.png */,
+				D23125872135F01800B15DEA /* FitLucas00out.dae */,
+			);
+			name = models;
+			path = Resources/models;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -125,10 +196,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23125972135F01800B15DEA /* FitLucas00out.dae in Resources */,
+				D23125962135F01800B15DEA /* FitLucas_Eye.02.png in Resources */,
+				D23125952135F01800B15DEA /* FitLucas_Eye.03.png in Resources */,
+				D231258D2135F01800B15DEA /* FitLucas_EyeYellow.01.png in Resources */,
+				D23125942135F01800B15DEA /* Stick.png in Resources */,
+				D231258C2135F01800B15DEA /* Stick02.png in Resources */,
+				D23125932135F01800B15DEA /* FitLucas_Eye.01.png in Resources */,
 				D23125562135C2DB00B15DEA /* art.scnassets in Resources */,
+				D23125922135F01800B15DEA /* FitLucas_Eye.00.png in Resources */,
+				D23125882135F01800B15DEA /* StickLeaf01.png in Resources */,
 				D23125602135C2DC00B15DEA /* LaunchScreen.storyboard in Resources */,
+				D231258F2135F01800B15DEA /* FitLucas_EyeYellow.02.png in Resources */,
+				D231258A2135F01800B15DEA /* FitLucas_Wear.png in Resources */,
+				D231258E2135F01800B15DEA /* FitLucas_EyeYellow.00.png in Resources */,
 				D231255D2135C2DC00B15DEA /* Assets.xcassets in Resources */,
+				D231258B2135F01800B15DEA /* FitLucas_Face.png in Resources */,
+				D23125912135F01800B15DEA /* FitLucas_EyeYellow.03.png in Resources */,
+				D23125892135F01800B15DEA /* StickLeaf02.png in Resources */,
 				D231255B2135C2DB00B15DEA /* Main.storyboard in Resources */,
+				D23125902135F01800B15DEA /* FitLucas_Hair.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +228,8 @@
 			files = (
 				D23125582135C2DB00B15DEA /* ViewController.swift in Sources */,
 				D23125542135C2DB00B15DEA /* AppDelegate.swift in Sources */,
+				D21BA37321375BC2000AA7F9 /* SCNNode.swift in Sources */,
+				D21BA370213735C1000AA7F9 /* ColladaNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +376,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P36BG58534;
 				INFOPLIST_FILE = ARAugust/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P36BG58534;
 				INFOPLIST_FILE = ARAugust/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
