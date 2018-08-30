@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-extension SCNNode{
+extension SCNNode {
     func parentWithName(_ name: String) -> SCNNode?{
         
         var currentNode: SCNNode? = self.parent

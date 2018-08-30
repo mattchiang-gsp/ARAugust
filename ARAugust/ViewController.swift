@@ -27,15 +27,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = false
         
-        // Create a new scene
-//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-//        sceneView.scene = scene
-        
         // Add tapGestureRecognizer to the view controller
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        addTapGestureToSceneView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,26 +44,78 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Add previously loaded images to ARscene configuration as detectionimages
         configuration.detectionImages = referenceImages
+        
+        // Tell ARKit to look for horizontal planes
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         sceneView.session.run(configuration)
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
     }
     
+    // MARK: - Plane Detection
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        // 1. Unwrap anchor as an ARPlaneAnchor
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        // 2. Create the SCNPlane
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        let plane = SCNPlane(width: width, height: height)
+        
+        // 3. Set plane materials
+        plane.materials.first?.diffuse.contents = UIColor.blue
+        
+        // 4. Create a node with the plane geometry
+        let planeNode = SCNNode(geometry: plane)
+        
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x, y, z)
+        planeNode.eulerAngles.x = -Float.pi/2
+        
+        node.addChildNode(planeNode)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        // 1. Extract previous ARPlaneAnchor, SCNNode, and SCNplane
+        guard let planeAnchor = anchor as? ARPlaneAnchor,
+            let planeNode = node.childNodes.first,
+            let plane = planeNode.geometry as? SCNPlane
+            else { return }
+        
+        // 2. Update plane's width and height
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        plane.width = width
+        plane.height = height
+        
+        // 3. Update planeNode's position
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x, y, z)
+    }
+    
+    // MARK: - Image Recognition
+    /*
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let imageAnchor = anchor as? ARImageAnchor else {
             return
         }
         
         // 1. Load the plane's scene
-//        guard let shipScene = SCNScene(named: "art.scnassets/ship.scn") else {
-//            print("Cannot find ship scene in art.scnassets")
-//            return
-//        }
-        
-//        print("Should load lucas")
-        
-//        let shipNode = shipScene.rootNode.childNode(withName: "lucas", recursively: true)!
-       
+        guard let shipScene = SCNScene(named: "art.scnassets/ship.scn") else {
+            print("Cannot find ship scene in art.scnassets")
+            return
+        }
+     
+        print("Should load lucas")
+     
+        let shipNode = shipScene.rootNode.childNode(withName: "lucas", recursively: true)!
+     
         
         guard let scene = SCNScene(named: "FitLucas00out.dae") else {
             return
@@ -100,9 +145,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // 5. Add the node to the scene
         sceneView.scene.rootNode.addChildNode(shipNode)
-        
-//        self.imageNode = node
     }
+    */
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -118,95 +162,65 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Touch Gestures
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-//        self.spawnModel()
-    }
-    
     @objc func handleTap(sender: UITapGestureRecognizer) {
         // guard let sceneView = sender.view as? ARSCNView else { return }
-        let touchLocation = sender.location(in: sceneView)
+        let tapLocation = sender.location(in: sceneView)
         
         
-        let hitTestResult = sceneView.hitTest(touchLocation, options: [SCNHitTestOption.categoryBitMask : HitTestType.lucas.rawValue] )
+        let hitTestResult = sceneView.hitTest(tapLocation, options: [SCNHitTestOption.categoryBitMask : HitTestType.lucas.rawValue] )
         if !hitTestResult.isEmpty {
           
-            
             if var lucas = hitTestResult.first!.node.parentWithName("lucas") {
                 (lucas as! ColladaNode).activate()
+            } else {
+                // Add Lucas to the plane. Lucas only be added on a plane
+                addLucasToSceneView(tapLocation: tapLocation)
             }
             
-            
-            
-            
-//            for hitResult in hitTestResult {
-//
-//                print(hitResult.node.name)
-//                print("----")
-////                if (hitResult.node.parent != nil) {
-////                    print(hitResult.node.parent?.name)
-////                }
-////                hitResult.node.scale = SCNVector3(4, 4, 4)
-//            }
-//            print(">>>>>>>>")
-        } else {
-            self.spawnModel()
         }
     }
     
-   
-    
+    // Spawn the model a set distance away from the camera
     func spawnModel() {
         let offsetPosition = SCNVector3(x: 0, y: 0, z: -1)
         let objectPosition = sceneView.pointOfView!.convertPosition(offsetPosition, to: nil)
         
-        
-        
         let lucasNode = ColladaNode(named: "FitLucas00out.dae")
         
-        
-        
-        
-        
-//        guard let scene = SCNScene(named: "FitLucas00out.dae") else {
-//            return
-//        }
-        
-//        let modelNode = SCNNode()
-//        let nodeArray = scene.rootNode.childNodes
-//        for childNode in nodeArray {
-//            modelNode.addChildNode(childNode as SCNNode)
-//        }
-//
         // 1. Add model to the scene
         lucasNode.scale = SCNVector3(0.01, 0.01, 0.01)
         lucasNode.position = objectPosition
         lucasNode.rotation.x = 0
         sceneView.scene.rootNode.addChildNode(lucasNode)
-        
     }
     
-//    private func objectInteracting(with gesture: UIGestureRecognizer, in view: ARSCNView) {
-//        for index in 0..<gesture.numberOfTouches {
-//            let touchLocation = gesture.location(ofTouch: index, in: view)
-//
-//            print(touchLocation)
-//        }
-//    }
+    // Spawn the model where the tap occured on the horizontal plane
+    func addLucasToSceneView(tapLocation: CGPoint) {
+        let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        
+        // Get the x, y, and z from the tap location of the existing plane
+        guard let hitTestResult = hitTestResults.first else { return }
+        
+        let translation = hitTestResult.worldTransform.columns.3
+        let x = translation.x
+        let y = translation.y
+        let z = translation.z
+        
+        // TODO: - Turn spawnModel into a general function
+        let lucasNode = ColladaNode(named: "FitLucas00out.dae")
+        lucasNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        lucasNode.position = SCNVector3(x, y, z)
+        sceneView.scene.rootNode.addChildNode(lucasNode)
+    }
     
     
+    
+    func addTapGestureToSceneView() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+    }
 
     // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

@@ -24,9 +24,7 @@ class ColladaNode: SCNNode {
         }
         
         self.name = "lucas"
-        
-        
-        
+ 
         for childNode in scene.rootNode.childNodes {
             self.addChildNode(childNode)
 //            childNode.categoryBitMask = HitTestType.lucas.rawValue
@@ -34,11 +32,9 @@ class ColladaNode: SCNNode {
         
         self.categoryBitMask = HitTestType.lucas.rawValue
     }
-    
-    
+
     public func activate() {
         
         self.scale = SCNVector3(self.scale.x * 2, self.scale.y * 2, self.scale.z * 2)
     }
-    
 }
