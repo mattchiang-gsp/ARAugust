@@ -54,7 +54,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - Plane Detection
-    
+    /*
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // 1. Unwrap anchor as an ARPlaneAnchor
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
@@ -78,6 +78,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         node.addChildNode(planeNode)
     }
+    */
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         // 1. Extract previous ARPlaneAnchor, SCNNode, and SCNplane
@@ -98,7 +99,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let z = CGFloat(planeAnchor.center.z)
         planeNode.position = SCNVector3(x, y, z)
     }
-    
+ 
     // MARK: - Image Recognition
     /*
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -106,6 +107,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return
         }
         
+        /*
         // 1. Load the plane's scene
         guard let shipScene = SCNScene(named: "art.scnassets/ship.scn") else {
             print("Cannot find ship scene in art.scnassets")
@@ -122,15 +124,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         
         let shipNode = SCNNode()
+ 
         
         let nodeArray = scene.rootNode.childNodes
         
         for childNode in nodeArray {
             shipNode.addChildNode(childNode as SCNNode)
         }
+         */
+        
+        let lucasNode = ColladaNode(named: "FitLucas00out.dae")
+        
         
         // 2. Calculate the size based on shipNode's bounding box
-        let (min, max) = shipNode.boundingBox
+        let (min, max) = lucasNode.boundingBox
         let size = SCNVector3Make(max.x - min.x, max.y - min.y, max.z - min.z)
         
         // 3. Calculate the ratio of difference between real image and object size.
@@ -139,14 +146,51 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let heightRatio = Float(imageAnchor.referenceImage.physicalSize.height) / size.z
         let scale = [widthRatio, heightRatio].min()!
         // 4. Set transform from imageAnchor data
-        shipNode.transform = SCNMatrix4(imageAnchor.transform)
+        lucasNode.transform = SCNMatrix4(imageAnchor.transform)
         
-        shipNode.scale = SCNVector3(scale, scale, scale)
+        lucasNode.scale = SCNVector3(scale, scale, scale)
         
         // 5. Add the node to the scene
-        sceneView.scene.rootNode.addChildNode(shipNode)
+        // sceneView.scene.rootNode.addChildNode(shipNode)
+        sceneView.scene.rootNode.addChildNode(lucasNode)
     }
     */
+    // MARK: - Combined plane and image detection
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+        if let detectedAnchor = anchor as? ARImageAnchor {
+            print("It's an image")
+            spawnModelOnImageAnchor(imageAnchor: detectedAnchor)
+        } else if let detectedAnchor = anchor as? ARPlaneAnchor {
+            print("It's a horizontal plane. Tap gesture handles spawning models on the plane")
+        } else {
+            print("Nothing")
+        }
+    }
+    
+    func spawnModelOnImageAnchor(imageAnchor: ARImageAnchor) {
+        let lucasNode = ColladaNode(named: "FitLucas00out.dae")
+        
+        // 2. Calculate the size based on shipNode's bounding box
+        let (min, max) = lucasNode.boundingBox
+        let size = SCNVector3Make(max.x - min.x, max.y - min.y, max.z - min.z)
+        
+        // 3. Calculate the ratio of difference between real image and object size.
+        // Ignore Y axis because it will be pointed out of the image
+        let widthRatio = Float(imageAnchor.referenceImage.physicalSize.width) / size.x
+        let heightRatio = Float(imageAnchor.referenceImage.physicalSize.height) / size.z
+        let scale = [widthRatio, heightRatio].min()!
+        // 4. Set transform from imageAnchor data
+        lucasNode.transform = SCNMatrix4(imageAnchor.transform)
+        
+        lucasNode.scale = SCNVector3(scale, scale, scale)
+        
+        // 5. Add the node to the scene
+        // sceneView.scene.rootNode.addChildNode(shipNode)
+        sceneView.scene.rootNode.addChildNode(lucasNode)
+    }
+ 
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
