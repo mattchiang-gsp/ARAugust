@@ -31,6 +31,8 @@
 		D23125952135F01800B15DEA /* FitLucas_Eye.03.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125852135F01800B15DEA /* FitLucas_Eye.03.png */; };
 		D23125962135F01800B15DEA /* FitLucas_Eye.02.png in Resources */ = {isa = PBXBuildFile; fileRef = D23125862135F01800B15DEA /* FitLucas_Eye.02.png */; };
 		D23125972135F01800B15DEA /* FitLucas00out.dae in Resources */ = {isa = PBXBuildFile; fileRef = D23125872135F01800B15DEA /* FitLucas00out.dae */; };
+		D2836E942149C7EF00281B77 /* sickomode.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2836E932149C7EF00281B77 /* sickomode.mp3 */; };
+		D2836E962149D1BA00281B77 /* head.obj in Resources */ = {isa = PBXBuildFile; fileRef = D2836E952149D1BA00281B77 /* head.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		D23125852135F01800B15DEA /* FitLucas_Eye.03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Eye.03.png; sourceTree = "<group>"; };
 		D23125862135F01800B15DEA /* FitLucas_Eye.02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitLucas_Eye.02.png; sourceTree = "<group>"; };
 		D23125872135F01800B15DEA /* FitLucas00out.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = FitLucas00out.dae; sourceTree = "<group>"; };
+		D2836E932149C7EF00281B77 /* sickomode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sickomode.mp3; path = Resources/sickomode.mp3; sourceTree = SOURCE_ROOT; };
+		D2836E952149D1BA00281B77 /* head.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = head.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 		D23125522135C2DB00B15DEA /* ARAugust */ = {
 			isa = PBXGroup;
 			children = (
+				D2836E922149C7AB00281B77 /* assets */,
 				D21BA37121375BAF000AA7F9 /* extensions */,
 				D23125532135C2DB00B15DEA /* AppDelegate.swift */,
 				D23125772135F01800B15DEA /* models */,
@@ -129,6 +134,7 @@
 				D23125812135F01800B15DEA /* FitLucas_EyeYellow.03.png */,
 				D23125822135F01800B15DEA /* FitLucas_Eye.00.png */,
 				D23125832135F01800B15DEA /* FitLucas_Eye.01.png */,
+				D2836E952149D1BA00281B77 /* head.obj */,
 				D23125842135F01800B15DEA /* Stick.png */,
 				D23125852135F01800B15DEA /* FitLucas_Eye.03.png */,
 				D23125862135F01800B15DEA /* FitLucas_Eye.02.png */,
@@ -137,6 +143,14 @@
 			name = models;
 			path = Resources/models;
 			sourceTree = SOURCE_ROOT;
+		};
+		D2836E922149C7AB00281B77 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				D2836E932149C7EF00281B77 /* sickomode.mp3 */,
+			);
+			path = assets;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -198,6 +212,7 @@
 			files = (
 				D23125972135F01800B15DEA /* FitLucas00out.dae in Resources */,
 				D23125962135F01800B15DEA /* FitLucas_Eye.02.png in Resources */,
+				D2836E942149C7EF00281B77 /* sickomode.mp3 in Resources */,
 				D23125952135F01800B15DEA /* FitLucas_Eye.03.png in Resources */,
 				D231258D2135F01800B15DEA /* FitLucas_EyeYellow.01.png in Resources */,
 				D23125942135F01800B15DEA /* Stick.png in Resources */,
@@ -206,6 +221,7 @@
 				D23125562135C2DB00B15DEA /* art.scnassets in Resources */,
 				D23125922135F01800B15DEA /* FitLucas_Eye.00.png in Resources */,
 				D23125882135F01800B15DEA /* StickLeaf01.png in Resources */,
+				D2836E962149D1BA00281B77 /* head.obj in Resources */,
 				D23125602135C2DC00B15DEA /* LaunchScreen.storyboard in Resources */,
 				D231258F2135F01800B15DEA /* FitLucas_EyeYellow.02.png in Resources */,
 				D231258A2135F01800B15DEA /* FitLucas_Wear.png in Resources */,

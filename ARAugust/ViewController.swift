@@ -15,6 +15,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var shipNode: SCNNode?
     var imageNode: SCNNode?
+    var audioSource: SCNAudioSource!
     
     // MARK: - View Lifecycle
     
@@ -29,6 +30,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Add tapGestureRecognizer to the view controller
         addTapGestureToSceneView()
+        
+        // Instantiate the audio source
+        audioSource = SCNAudioSource(fileNamed: "sickomode.mp3")
+        audioSource.loops = true
+        audioSource.load()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             fatalError("Missing expected asset catalog resources.")
         }
         
+
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         
@@ -51,6 +58,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+
     }
     
     // MARK: - Plane Detection
@@ -186,6 +194,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         lucasNode.scale = SCNVector3(scale, scale, scale)
         
+        // Play music from the node
+        playAudioFromNode(node: lucasNode)
+        
         // 5. Add the node to the scene
         // sceneView.scene.rootNode.addChildNode(shipNode)
         sceneView.scene.rootNode.addChildNode(lucasNode)
@@ -254,7 +265,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let lucasNode = ColladaNode(named: "FitLucas00out.dae")
         lucasNode.scale = SCNVector3(0.01, 0.01, 0.01)
         lucasNode.position = SCNVector3(x, y, z)
+        
+        // Add audio player to object node
+        playAudioFromNode(node: lucasNode)
+        
         sceneView.scene.rootNode.addChildNode(lucasNode)
+    }
+    
+    func playAudioFromNode(node: SCNNode) {
+        node.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+        
+        let play = SCNAction.playAudio(audioSource, waitForCompletion: false)
+        node.runAction(play)
     }
     
     
